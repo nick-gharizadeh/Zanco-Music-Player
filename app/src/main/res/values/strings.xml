@@ -2,4 +2,9 @@
     <string name="app_name">Zanco Music Player</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="masalan_song_name">Masalan</string>
+    <string name="singer_name">Zanco</string>
+    <string name="boro_samte_ali_song_name">Boro Samte Ali</string>
+    <string name="rade_paa_song_name">Rade Paa</string>
+    <string name="khosham_miad_song_name">Khosham Miad</string>
 </resources>
