@@ -57,6 +57,11 @@ class HomeViewModel(var app: Application) : AndroidViewModel(app) {
         mMediaPlayer.start()
     }
 
+    fun stopPlaying(){
+        mMediaPlayer.stop()
+        mMediaPlayer.reset()
+    }
+
     fun setVisible(view: View) {
         view.visibility = View.VISIBLE
     }

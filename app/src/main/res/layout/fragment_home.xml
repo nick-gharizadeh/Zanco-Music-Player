@@ -225,6 +225,7 @@
         android:id="@+id/cv_control"
         android:layout_width="0dp"
         android:layout_height="90dp"
+        android:visibility="gone"
         app:cardCornerRadius="0dp"
         app:cardElevation="0dp"
         app:cardPreventCornerOverlap="true"

@@ -47,6 +47,11 @@ class HomeFragment : Fragment() {
         binding.imageViewPlay.setOnClickListener {
             homeViewModel.startPlaying()
         }
+        binding.imageViewStop.setOnClickListener {
+            homeViewModel.stopPlaying()
+            homeViewModel.setInvisible(binding.cvControl)
+
+        }
 
     }
 
