@@ -1,20 +1,21 @@
 package com.example.zancomusicplayer
 
 import android.app.Application
-import android.media.AudioManager
 import android.media.MediaPlayer
 import android.net.Uri
+import android.view.View
 import androidx.lifecycle.AndroidViewModel
 
 
 class HomeViewModel(var app: Application) : AndroidViewModel(app) {
 
     var mMediaPlayer: MediaPlayer = MediaPlayer()
+    var timeThatPaused = 0
+    var isPaused = false
 
 
     fun playMusic(songName: Utils.SongName) {
         when (songName) {
-
             Utils.SongName.Masalan -> {
                 makeMediaPlayerReadyForPlaying(Utils.SongUri.Masalan.uri)
             }
@@ -46,4 +47,20 @@ class HomeViewModel(var app: Application) : AndroidViewModel(app) {
             e.printStackTrace()
         }
     }
+
+    fun pausePlaying() {
+        mMediaPlayer.pause()
+        isPaused = true
+        timeThatPaused = mMediaPlayer.currentPosition
+    }
+
+    fun setVisible(view: View) {
+        view.visibility = View.VISIBLE
+    }
+
+    fun setInvisible(view: View) {
+        view.visibility = View.INVISIBLE
+    }
+
+
 }

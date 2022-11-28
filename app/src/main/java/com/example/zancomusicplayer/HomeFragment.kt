@@ -26,17 +26,25 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.cvMasalan.setOnClickListener {
+            homeViewModel.setVisible(binding.cvControl)
             homeViewModel.playMusic(Utils.SongName.Masalan)
         }
         binding.cvBoroSamteAli.setOnClickListener {
+            homeViewModel.setVisible(binding.cvControl)
             homeViewModel.playMusic(Utils.SongName.BoroSamteAli)
         }
         binding.cvRadePaa.setOnClickListener {
+            homeViewModel.setVisible(binding.cvControl)
             homeViewModel.playMusic(Utils.SongName.RadePaa)
         }
         binding.cvKhoshamMiad.setOnClickListener {
+            homeViewModel.setVisible(binding.cvControl)
             homeViewModel.playMusic(Utils.SongName.KhoshamMiad)
         }
+        binding.imageViewPause.setOnClickListener {
+            homeViewModel.pausePlaying()
+        }
+
 
     }
 
