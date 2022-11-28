@@ -44,7 +44,9 @@ class HomeFragment : Fragment() {
         binding.imageViewPause.setOnClickListener {
             homeViewModel.pausePlaying()
         }
-
+        binding.imageViewPlay.setOnClickListener {
+            homeViewModel.startPlaying()
+        }
 
     }
 

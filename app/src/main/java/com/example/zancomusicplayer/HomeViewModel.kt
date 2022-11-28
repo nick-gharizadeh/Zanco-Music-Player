@@ -11,7 +11,6 @@ class HomeViewModel(var app: Application) : AndroidViewModel(app) {
 
     var mMediaPlayer: MediaPlayer = MediaPlayer()
     var timeThatPaused = 0
-    var isPaused = false
 
 
     fun playMusic(songName: Utils.SongName) {
@@ -50,8 +49,12 @@ class HomeViewModel(var app: Application) : AndroidViewModel(app) {
 
     fun pausePlaying() {
         mMediaPlayer.pause()
-        isPaused = true
         timeThatPaused = mMediaPlayer.currentPosition
+    }
+
+    fun startPlaying() {
+        mMediaPlayer.seekTo(timeThatPaused)
+        mMediaPlayer.start()
     }
 
     fun setVisible(view: View) {
