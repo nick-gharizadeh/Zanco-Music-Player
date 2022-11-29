@@ -231,7 +231,8 @@
         app:cardPreventCornerOverlap="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        tools:visibility="visible">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -239,31 +240,68 @@
 
             <ImageView
                 android:id="@+id/imageView_play"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="35dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="8dp"
                 android:src="@drawable/ic_play"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/imageView_pause"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/imageView_pause"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="35dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="16dp"
                 android:src="@drawable/ic_pause"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imageView_play"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/imageView_stop"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="35dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="8dp"
                 android:src="@drawable/ic_stop"
                 app:layout_constraintBottom_toBottomOf="@+id/imageView_play"
                 app:layout_constraintEnd_toStartOf="@+id/imageView_play"
                 app:layout_constraintTop_toTopOf="@+id/imageView_play" />
+
+            <TextView
+                android:id="@+id/textView_song_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:text="TextView"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/imageView_song"
+                app:layout_constraintTop_toTopOf="@+id/imageView_song" />
+
+            <ImageView
+                android:id="@+id/imageView_song"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="16dp"
+                android:src="@drawable/boro_samte_ali__cover"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.466" />
+
+            <TextView
+                android:id="@+id/textView_singer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/singer_name"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView_song"
+                app:layout_constraintStart_toStartOf="@+id/textView_song_name"
+                app:layout_constraintTop_toBottomOf="@+id/textView_song_name" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
