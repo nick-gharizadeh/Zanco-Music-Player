@@ -59,6 +59,10 @@ class HomeFragment : Fragment() {
         homeViewModel.songName.observe(viewLifecycleOwner) {
             binding.textViewSongName.text = it
         }
+        homeViewModel.mMediaPlayer.setOnCompletionListener {
+            homeViewModel.stopPlaying()
+            homeViewModel.setInvisible(binding.cvControl)
+        }
 
     }
 
