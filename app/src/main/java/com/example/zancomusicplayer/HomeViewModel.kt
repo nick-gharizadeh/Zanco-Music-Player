@@ -5,27 +5,33 @@ import android.media.MediaPlayer
 import android.net.Uri
 import android.view.View
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.MutableLiveData
 
 
 class HomeViewModel(var app: Application) : AndroidViewModel(app) {
 
     var mMediaPlayer: MediaPlayer = MediaPlayer()
     var timeThatPaused = 0
+    var songName = MutableLiveData<String>()
 
 
-    fun playMusic(songName: Utils.SongName) {
-        when (songName) {
-            Utils.SongName.Masalan -> {
+    fun playMusic(song: Utils.Song) {
+        when (song) {
+            Utils.Song.Masalan -> {
                 makeMediaPlayerReadyForPlaying(Utils.SongUri.Masalan.uri)
+                songName.value = Utils.SongName.Masalan.songName
             }
-            Utils.SongName.BoroSamteAli -> {
+            Utils.Song.BoroSamteAli -> {
                 makeMediaPlayerReadyForPlaying(Utils.SongUri.BoroSamteAli.uri)
+                songName.value = Utils.SongName.BoroSamteAli.songName
             }
-            Utils.SongName.RadePaa -> {
+            Utils.Song.RadePaa -> {
                 makeMediaPlayerReadyForPlaying(Utils.SongUri.RadePaa.uri)
+                songName.value = Utils.SongName.RadePaa.songName
             }
-            Utils.SongName.KhoshamMiad -> {
+            Utils.Song.KhoshamMiad -> {
                 makeMediaPlayerReadyForPlaying(Utils.SongUri.KhoshamMiad.uri)
+                songName.value = Utils.SongName.KhoshamMiad.songName
             }
         }
     }
@@ -57,7 +63,7 @@ class HomeViewModel(var app: Application) : AndroidViewModel(app) {
         mMediaPlayer.start()
     }
 
-    fun stopPlaying(){
+    fun stopPlaying() {
         mMediaPlayer.stop()
         mMediaPlayer.reset()
     }
