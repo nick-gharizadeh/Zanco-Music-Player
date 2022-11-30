@@ -3,7 +3,6 @@ package com.example.zancomusicplayer
 import android.app.Application
 import android.media.MediaPlayer
 import android.net.Uri
-import android.view.View
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 
@@ -13,6 +12,7 @@ class HomeViewModel(var app: Application) : AndroidViewModel(app) {
     var mMediaPlayer: MediaPlayer = MediaPlayer()
     var timeThatPaused = 0
     var songName = MutableLiveData<String>()
+    var isPaused = false
 
 
     fun playMusic(song: Utils.Song) {
@@ -37,9 +37,8 @@ class HomeViewModel(var app: Application) : AndroidViewModel(app) {
     }
 
     fun makeMediaPlayerReadyForPlaying(uri: Uri) {
-        if (mMediaPlayer.isPlaying) {
-            mMediaPlayer.stop()
-            mMediaPlayer.reset()
+        if (mMediaPlayer.isPlaying or isPaused) {
+            stopPlaying()
         }
         try {
             mMediaPlayer.setDataSource(
@@ -55,25 +54,23 @@ class HomeViewModel(var app: Application) : AndroidViewModel(app) {
 
     fun pausePlaying() {
         mMediaPlayer.pause()
+        isPaused = true
         timeThatPaused = mMediaPlayer.currentPosition
     }
 
-    fun startPlaying() {
-        mMediaPlayer.seekTo(timeThatPaused)
-        mMediaPlayer.start()
+    fun startPlaying(): Boolean {
+        if (isPaused) {
+            mMediaPlayer.seekTo(timeThatPaused)
+            mMediaPlayer.start()
+            return true
+        }
+        return false
     }
 
     fun stopPlaying() {
+        isPaused = false
         mMediaPlayer.stop()
         mMediaPlayer.reset()
-    }
-
-    fun setVisible(view: View) {
-        view.visibility = View.VISIBLE
-    }
-
-    fun setInvisible(view: View) {
-        view.visibility = View.INVISIBLE
     }
 
 
